@@ -1114,6 +1114,40 @@ main {
   #BLOG
 \*-----------------------------------*/
 
+.blogs {
+  text-align: center;
+}
+
+.blogs-btn {
+  text-decoration: none;
+}
+
+.btn-blogs {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 10px 0px;
+}
+
+.btn-blogs:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-blogs:active {
+  background-color: #003f8a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
 .blog-posts { margin-bottom: 10px; }
 
 .blog-posts-list {
