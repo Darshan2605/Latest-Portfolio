@@ -256,8 +256,8 @@ article.active {
 }
 
 .has-scrollbar::-webkit-scrollbar {
-  width: 5px; /* for vertical scrollbar */
-  height: 5px; /* for horizontal scrollbar */
+  width: 10px; /* for vertical scrollbar */
+  height: 7px; /* for horizontal scrollbar */
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
@@ -750,11 +750,19 @@ main {
 
 .clients-item img {
   width: 100%;
-  filter: grayscale(1);
+  
   transition: var(--transition-1);
 }
 
 .clients-item img:hover { filter: grayscale(0); }
+
+.clients-item p {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px; /* Optional spacing between the image and text */
+}
+
 
 
 
@@ -766,6 +774,39 @@ main {
 
 .article-title { margin-bottom: 30px; }
 
+.download-cv {
+  text-align: center;
+}
+
+.download-btn {
+  text-decoration: none;
+}
+
+.btn-download {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 10px 0px;
+}
+
+.btn-download:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-download:active {
+  background-color: #003f8a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
 
 /**
  * education and experience 
