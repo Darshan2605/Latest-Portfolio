@@ -997,7 +997,7 @@ main {
 .project-img {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 100%;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 15px;
@@ -1065,6 +1065,48 @@ main {
   color: var(--light-gray-70);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
+}
+
+.project-category {
+  color: var(--light-gray-70);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+}
+
+.project-buttons {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-buttons a {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  color: var(--white-2);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: var(--transition-1);
+  text-align: center;
+}
+
+.live-button {
+  background-color: #007bff;
+}
+
+.live-button:hover {
+  background-color: #003f8a;
+}
+
+.github-button {
+  background-color: #007bff;
+}
+
+.github-button:hover {
+  background-color: #003f8a;
 }
 
 
