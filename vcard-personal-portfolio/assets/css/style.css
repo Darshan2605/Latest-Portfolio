@@ -1027,6 +1027,45 @@ main {
 }
 
 
+/*-----------------------------------*\
+  #CERTIFICATIONS
+\*-----------------------------------*/
+
+.certifications {
+  padding: 50px 0;
+  background-color: var(--eerie-black-2); /* Match the background color */
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: var(--shadow-1);
+}
+
+.certifications h2 {
+ 
+  margin-bottom: 30px;
+  color: var(--white-2);
+  text-transform: capitalize;
+}
+
+.certifications ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.certifications li {
+  margin-bottom: 20px;
+}
+
+.certifications h3 {
+  margin: 0;
+  font-weight: 500;
+  color: var(--white-2);
+}
+
+.certifications p {
+  margin: 5px 0 0;
+  color: var(--light-gray); /* Match the text color */
+}
 
 
 
