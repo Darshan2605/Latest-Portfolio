@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Blogs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            color: #232f3e;
+            margin-bottom: 30px;
+        }
+
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .projects-table th,
+        .projects-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .projects-table th {
+            background-color: #232f3e;
+            color: white;
+            font-weight: bold;
+        }
+
+        .projects-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .project-image {
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .blog-link {
+            color: #0066c0;
+            text-decoration: none;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .projects-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .project-image {
+                width: 150px;
+                height: 90px;
+            }
+        }
+
+        /* Add these new styles */
+        .filter-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-filter {
+            padding: 8px 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            color: #232f3e;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .service-filter:hover {
+            background-color: #f5f5f5;
+        }
+
+        .service-filter.active {
+            background-color: #232f3e;
+            color: white;
+            border-color: #232f3e;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>AWS Services Blogs</h1>
+    
+    <!-- Update filter container -->
+    <div class="filter-container">
+        <button class="service-filter active" data-service="all">All Services</button>
+        <button class="service-filter" data-service="AWS EC2">EC2</button>
+        <button class="service-filter" data-service="AWS IAM">IAM</button>
+        <button class="service-filter" data-service="AWS CLI">CLI</button>
+        <button class="service-filter" data-service="EBS">EBS</button>
+        <button class="service-filter" data-service="Load Balancer">Load Balancer</button>
+        <button class="service-filter" data-service="Auto Scaling">Auto Scaling</button>
+        <button class="service-filter" data-service="AWS VPC">VPC</button>
+        <button class="service-filter" data-service="S3">S3</button>
+        <button class="service-filter" data-service="ECR">ECR</button>
+        <button class="service-filter" data-service="AWS ECS">ECS</button>
+        <button class="service-filter" data-service="CI/CD">CI/CD</button>
+        <button class="service-filter" data-service="Elastic Beanstalk">Elastic Beanstalk</button>
+        <button class="service-filter" data-service="AWS Fargate">AWS Fargate</button>
+    </div>
+
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>AWS Service</th>
+                <th>Blog Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>AWS Account Creation</td>
+                <td>AWS IAM</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-aws-account-5a5054b2c528" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>AWS EC2 Creation</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-aws-ec2-instance-d92afdddd922" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Access Linux EC2 From Linux</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-connect-with-aws-ec2-using-linux-ssh-agent-0b4f60b9bfa1" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Access Windows EC2 from Linux</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-connect-to-windows-ec2-from-linux-84fe32937249" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create Windows EC2</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-a-windows-ec2-instance-on-aws-0093c433a9d9" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to install Nginx on EC2</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-install-nginx-in-aws-ec2-ubuntu-366f474ea89e" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to install Nginx on EC2 using Bootstrap Script</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-write-bootstrap-script-user-data-to-install-nginx-on-ec2-a9a848753f80" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Extract EC2 Instance Metadata using 169.254.169.254 command</td>
+                <td>AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-extract-ec2-instance-metadata-using-169-254-169-254-command-d76c0d9d9c8d" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>IAM Creation</td>
+                <td>AWS IAM</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-aws-iam-user-7582105fca74" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>User Group Creation</td>
+                <td>AWS IAM</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-aws-iam-user-group-622cdda76d94" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>MFA for Root and IAM user</td>
+                <td>AWS IAM</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-setup-mfa-for-root-account-and-iam-user-1762182f069f" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Configure AWS CLI in Linux/Windows to Interact with AWS Console? What is Cloud Shell?</td>
+                <td>AWS CLI</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-configure-aws-cli-in-linux-windows-to-interact-with-aws-console-9b5c92f19d9b" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create Your Own Custom AMI in AWS?</td>
+                <td>AWS EC2 AMI</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-your-own-custom-ami-in-aws-836ec40b36d6" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Share Our Own Custom AMI with Other Region and Account ID?</td>
+                <td>AWS EC2 AMI</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-share-our-own-custom-ami-with-other-regeion-and-account-id-e7dec8b80fe8" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Attach Elastic IP to AWS EC2 Instance?</td>
+                <td>AWS EC2, Elastic IP</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-attach-elastic-ip-to-aws-ec2-instance-7303fff323a1" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Detach and Release Elastic IP Address from EC2 Instance?</td>
+                <td>AWS EC2, Elastic IP</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-detach-and-release-elastic-ip-address-from-ec2-instance-f5f70b6258e5" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create EBS Volume, Attach and Mount to EC2?</td>
+                <td>AWS EC2, EBS</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-ebs-volume-attach-and-mount-to-ec2-8c898d914dd1" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Detach EBS Volume from EC2?</td>
+                <td>AWS EC2, EBS</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-detach-ebs-volume-from-ec2-5cbfc49f7c8a" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Resize EBS Volume and Resize the File System?</td>
+                <td>AWS EC2, EBS</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-resize-ebs-volume-and-resize-the-file-system-cfa34e00feb4" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Attach One EBS Volume to Multiple EC2 Instances?</td>
+                <td>AWS EC2, EBS</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-attach-one-ebs-volume-to-multiple-ec2-instances-f16cf54ce0c1" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Classical LB with 3 EC2 Instances</td>
+                <td>AWS EC2, Classic Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-a-classic-load-balancer-for-3-ec2-instances-in-aws-aea768c48f30" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Set Up EC2 Instance to be Accessible Only by Load Balancer?</td>
+                <td>AWS EC2, Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-set-up-ec2-instance-to-be-accessible-only-by-load-balancer-612ded95b619" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create an Application Load Balancer for 3 EC2 Instances using Target Group?</td>
+                <td>AWS EC2, Application Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-an-application-load-balancer-for-3-ec2-instances-using-target-group-f1b6bccfd3c5" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Perform Path-Based Routing Using Application Load Balancer?</td>
+                <td>AWS EC2, Application Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-perform-path-based-routing-using-application-load-balancer-9646fb65a5f4" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>What is Stickiness in Application Load Balancer? How to Implement It?</td>
+                <td>AWS EC2, Application Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/what-is-stickiness-in-application-load-balancer-how-to-implement-it-26ed30adcf17" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Set Up HTTPS Traffic with Application Load Balancer?</td>
+                <td>AWS EC2, Application Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-set-up-https-traffic-with-application-load-balancer-53b9372a3cdc" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Set Up a Network Load Balancer on AWS?</td>
+                <td>AWS EC2, Network Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-set-up-a-network-load-balancer-on-aws-041318b23a6e" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create Launch Template on AWS?</td>
+                <td>AWS EC2, Launch Template</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-launch-template-on-aws-2d9d6526d022" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Setup Auto Scaling Group on AWS?</td>
+                <td>AWS EC2, Auto Scaling</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-setup-auto-scaling-group-on-aws-66387359f33e" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create Dynamic Auto Scaling Policy on AWS?</td>
+                <td>AWS EC2, Auto Scaling</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-dynamic-auto-scaling-policy-on-aws-11a7c5007e17" class="blog-link">Read More</a></td>
+            </tr>
+            
+            <tr>
+                <td>Everything About VPC</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/everything-about-vpc-in-aws-9d639b617af0" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Create VPC, Subnets, Route Tables, Internet Gateway on AWS?</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-create-vpc-subnets-route-tables-internet-gateway-on-aws-ff6949698b4e" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>How to Host Static Website(From GitHub Repo) on EC2 using Code Pipeline Service(CI/CD Automation) on AWS?</td>
+                <td>CI/CD, AWS EC2</td>
+                <td><a href="https://medium.com/@darshanlondhe9/how-to-host-static-website-from-github-repo-on-ec2-using-code-pipeline-service-ci-cd-automation-8bc51f6ff707" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>S3 Deploying a Node.js App on AWS ECS Fargate with Docker, ECR, and Load Balancer.</td>
+                <td>S3, AWS ECS, AWS Fargate, ECR, Load Balancer</td>
+                <td><a href="https://medium.com/@darshanlondhe9/automating-node-js-bfe1f15f113d" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Streamlining Node.js Deployment: Automating AWS Elastic Beanstalk Deployments with GitHub Actions.</td>
+                <td>Elastic Beanstalk, CI/CD</td>
+                <td><a href="https://medium.com/@darshanlondhe9/streamlining-node-js-deployment-automating-aws-elastic-beanstalk-deployments-with-github-actions-dbeb1123acb5" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Securely Access a Private EC2 from Your Local Machine Using a Bastion Host in AWS</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/securely-access-a-private-ec2-from-your-local-machine-using-a-bastion-host-in-aws-758d1a2982b3" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Step-by-Step Guide to Setting Up a NAT Gateway and Connecting Private EC2 to the Internet</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/step-by-step-guide-to-setting-up-a-nat-gateway-and-connecting-private-ec2-to-the-internet-562cba5822ad" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Step-by-Step Guide: Setting Up VPC Peering and Connecting EC2 Instances</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/step-by-step-guide-setting-up-vpc-peering-and-connecting-ec2-instances-3cba5838e834" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Setting Up AWS Transit Gateway to Connect Multiple VPCs</td>
+                <td>AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/setting-up-aws-transit-gateway-to-connect-multiple-vpcs-d2e8afb4679a" class="blog-link">Read More</a></td>
+            </tr>
+            <tr>
+                <td>Accessing S3 from a Private EC2 Instance using VPC Endpoint. What is AWS Private Link?</td>
+                <td>S3, AWS VPC</td>
+                <td><a href="https://medium.com/@darshanlondhe9/accessing-s3-from-a-private-ec2-instance-using-vpc-endpoint-what-is-aws-private-link-b6be48d053f9" class="blog-link">Read More</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.service-filter');
+            const tableRows = document.querySelectorAll('.projects-table tbody tr');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const serviceFilter = button.getAttribute('data-service');
+
+                    tableRows.forEach(row => {
+                        const serviceCell = row.querySelector('td:nth-child(2)').textContent;
+                        
+                        if (serviceFilter === 'all') {
+                            row.classList.remove('hidden');
+                        } else {
+                            if (serviceCell.includes(serviceFilter)) {
+                                row.classList.remove('hidden');
+                            } else {
+                                row.classList.add('hidden');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: hsl(0, 0%, 14%);
+            color: hsl(0, 0%, 100%);
+        }
+
+        h1 {
+            text-align: center;
+            color: hsl(45, 100%, 72%);
+            margin-bottom: 30px;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .blog-post-item {
+            background: hsl(0, 0%, 17%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-banner-box {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .blog-banner-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 15px;
+        }
+
+        .blog-category {
+            color: hsl(45, 100%, 72%);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            background-color: hsl(0, 0%, 60%);
+            border-radius: 50%;
+        }
+
+        .blog-item-title {
+            color: hsl(0, 0%, 100%);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .blog-text {
+            color: hsl(0, 0%, 80%);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        time {
+            color: hsl(0, 0%, 60%);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Docker Projects</h1>
+
+    <section class="blog-posts">
+        <article class="blog-post-item">
+            <a href="https://medium.com/@darshanlondhe9/how-to-create-nodejs-and-mongodb-application-with-docker-52e19ba0f8ec">
+                <figure class="blog-banner-box">
+                    <img src="https://c4.wallpaperflare.com/wallpaper/827/3/786/docker-brand-containers-wallpaper-preview.jpg" alt="NodeJs and MongoDB Docker App" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <p class="blog-category">Docker</p>
+                        <span class="dot"></span>
+                        <time datetime="2025-01-11">Jan 11, 2025</time>
+                    </div>
+
+                    <h3 class="blog-item-title">NodeJs and MongoDB App 1 with Docker</h3>
+
+                    <p class="blog-text">
+                        Created Simple Form Filling App using NodeJs and MongoDB with Docker.
+                    </p>
+                </div>
+            </a>
+        </article>
+
+        
+    </section>
+</body>
+</html>

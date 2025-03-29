@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenkins Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: hsl(0, 0%, 14%);
+            color: hsl(0, 0%, 100%);
+        }
+
+        h1 {
+            text-align: center;
+            color: hsl(45, 100%, 72%);
+            margin-bottom: 30px;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .blog-post-item {
+            background: hsl(0, 0%, 17%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-banner-box {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .blog-banner-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .blog-category {
+            color: hsl(45, 100%, 72%);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .blog-item-title {
+            color: hsl(0, 0%, 100%);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .blog-text {
+            color: hsl(0, 0%, 80%);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-link {
+            color: hsl(45, 100%, 72%);
+            font-weight: 500;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jenkins Projects</h1>
+
+    <section class="blog-posts">
+        <!-- Jenkins Installation Guide -->
+        <article class="blog-post-item">
+            <a href="https://medium.com/@darshanlondhe9/install-jenkins-on-windows-ec2-ubuntu-467393771054">
+                <figure class="blog-banner-box">
+                    <img src="https://th.bing.com/th/id/OIP.cOyxsw7mopGonJkR_RDN4gHaFG?rs=1&pid=ImgDetMain" alt="Jenkins Installation">
+                </figure>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <p class="blog-category">Jenkins Installation</p>
+                    </div>
+                    <h3 class="blog-item-title">Install Jenkins on Windows, EC2, and Docker</h3>
+                    <p class="blog-text">
+                        Comprehensive guide for installing Jenkins on different platforms including Windows, AWS EC2, and Docker containers.
+                    </p>
+                </div>
+            </a>
+        </article>
+
+        <!-- Jenkins Overview -->
+        <article class="blog-post-item">
+            <a href="https://medium.com/@darshanlondhe9/everything-you-need-to-know-about-jenkins-05202ae33e67">
+                <figure class="blog-banner-box">
+                    <img src="https://th.bing.com/th/id/OIP.cOyxsw7mopGonJkR_RDN4gHaFG?rs=1&pid=ImgDetMain" alt="Jenkins Overview">
+                </figure>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <p class="blog-category">Jenkins Guide</p>
+                    </div>
+                    <h3 class="blog-item-title">Everything You Need to Know About Jenkins</h3>
+                    <p class="blog-text">
+                        Complete overview of Jenkins, including core concepts, features, and best practices for CI/CD implementation.
+                    </p>
+                </div>
+            </a>
+        </article>
+    </section>
+</body>
+</html>

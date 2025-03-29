@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Projects</title>
+    <title>DevOps Projects</title>
     <style>
         * {
             margin: 0;
@@ -15,13 +15,13 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             padding: 20px;
-            background-color: hsl(0, 0%, 14%);
-            color: hsl(0, 0%, 100%);
+            background-color: hsl(0, 0%, 14%); /* Dark background like index.html */
+            color: hsl(0, 0%, 100%); /* White text for better contrast */
         }
 
         h1 {
             text-align: center;
-            color: hsl(45, 100%, 72%);
+            color: hsl(45, 100%, 72%); /* Golden color for heading */
             margin-bottom: 30px;
         }
 
@@ -34,7 +34,7 @@
         }
 
         .blog-post-item {
-            background: hsl(0, 0%, 17%);
+            background: hsl(0, 0%, 17%); /* Darker card background */
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -69,20 +69,20 @@
         }
 
         .blog-category {
-            color: hsl(45, 100%, 72%);
+            color: hsl(45, 100%, 72%); /* Golden color for category */
             font-weight: 500;
             text-transform: uppercase;
             font-size: 14px;
         }
 
         .blog-item-title {
-            color: hsl(0, 0%, 100%);
+            color: hsl(0, 0%, 100%); /* White color for title */
             font-size: 1.3em;
             margin-bottom: 15px;
         }
 
         .blog-text {
-            color: hsl(0, 0%, 80%);
+            color: hsl(0, 0%, 80%); /* Light gray for text */
             font-size: 0.9em;
             margin-bottom: 15px;
         }
@@ -93,7 +93,7 @@
         }
 
         .blog-link {
-            color: hsl(45, 100%, 72%);
+            color: hsl(45, 100%, 72%); /* Golden color for links */
             font-weight: 500;
         }
 
@@ -103,94 +103,76 @@
     </style>
 </head>
 <body>
-    <h1>AWS Projects</h1>
+    <h1>DevOps Projects</h1>
 
     <section class="blog-posts">
-        <!-- Static Website with CI/CD -->
+        <!-- Jenkins Projects -->
         <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/how-to-host-static-website-from-github-repo-on-ec2-using-code-pipeline-service-ci-cd-automation-8bc51f6ff707">
+            <a href="jenkins-projects.html">
                 <figure class="blog-banner-box">
-                    <img src="aws-projects-img/1.png" alt="Static Website CI/CD">
+                    <img src="https://th.bing.com/th/id/OIP.cOyxsw7mopGonJkR_RDN4gHaFG?rs=1&pid=ImgDetMain" alt="Jenkins Projects">
                 </figure>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <p class="blog-category">CI/CD, EC2</p>
+                        <p class="blog-category">Jenkins</p>
                     </div>
-                    <h3 class="blog-item-title">Static Website with CI/CD Pipeline</h3>
+                    <h3 class="blog-item-title">Jenkins CI/CD Projects</h3>
                     <p class="blog-text">
-                        Host Static Website from GitHub Repo on EC2 using Code Pipeline Service.
+                        Continuous Integration and Continuous Deployment projects using Jenkins pipelines.
                     </p>
                 </div>
             </a>
         </article>
 
-        <!-- Node.js with ECS Fargate -->
+        <!-- Docker Projects -->
         <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/automating-node-js-bfe1f15f113d">
+            <a href="docker-projects.html">
                 <figure class="blog-banner-box">
-                    <img src="aws-projects-img/2.png" alt="Node.js ECS Fargate">
+                    <img src="https://c4.wallpaperflare.com/wallpaper/827/3/786/docker-brand-containers-wallpaper-preview.jpg" alt="Docker Projects">
                 </figure>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <p class="blog-category">ECS, Fargate, Docker</p>
+                        <p class="blog-category">Docker</p>
                     </div>
-                    <h3 class="blog-item-title">Node.js App on ECS Fargate</h3>
+                    <h3 class="blog-item-title">Docker Containerization Projects</h3>
                     <p class="blog-text">
-                        Deploy Node.js App using AWS ECS Fargate with Docker, ECR, and Load Balancer.
+                        Projects demonstrating containerization of applications using Docker.
                     </p>
                 </div>
             </a>
         </article>
 
-        <!-- Elastic Beanstalk Deployment -->
+        <!-- Kubernetes Projects -->
         <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/streamlining-node-js-deployment-automating-aws-elastic-beanstalk-deployments-with-github-actions-dbeb1123acb5">
+            <a href="kubernetes-projects.html">
                 <figure class="blog-banner-box">
-                    <img src="aws-projects-img/3.png" alt="Elastic Beanstalk">
+                    <img src="https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2019/05/Kubernetes_New.png" alt="Kubernetes Projects">
                 </figure>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <p class="blog-category">Elastic Beanstalk, GitHub Actions</p>
+                        <p class="blog-category">Kubernetes</p>
                     </div>
-                    <h3 class="blog-item-title">Automated Elastic Beanstalk Deployment</h3>
+                    <h3 class="blog-item-title">Kubernetes Orchestration Projects</h3>
                     <p class="blog-text">
-                        Automating AWS Elastic Beanstalk Deployments with GitHub Actions.
+                        Container orchestration and deployment projects using Kubernetes.
                     </p>
                 </div>
             </a>
         </article>
 
-        <!-- Docker on EC2 -->
+        <!-- Bash Scripting Projects -->
         <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/how-to-deploy-nodejs-docker-app-on-aws-ec2-5336e4eb87d7">
+            <a href="bash-projects.html">
                 <figure class="blog-banner-box">
-                    <img src="aws-projects-img/4.png" alt="Docker on EC2">
+                    <img src="https://www.pngitem.com/pimgs/m/168-1682766_bash-script-hd-png-download.png">
                 </figure>
                 <div class="blog-content">
                     <div class="blog-meta">
-                        <p class="blog-category">EC2, Docker</p>
+                        <p class="blog-category">Bash Scripting</p>
                     </div>
-                    <h3 class="blog-item-title">Docker Deployment on EC2</h3>
+                    <h3 class="blog-item-title">Shell Scripting Projects</h3>
                     <p class="blog-text">
-                        Deploy Node.js Application on EC2 using Docker Container.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Secure Node.js with SSL -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/deploying-a-secure-node-js-8fd704c4ccb3">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/5.png" alt="Secure Node.js">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">EC2, Nginx, SSL</p>
-                    </div>
-                    <h3 class="blog-item-title">Secure Node.js Deployment</h3>
-                    <p class="blog-text">
-                        Deploy Node.js with Nginx and SSL/TLS using Custom Domain.
+                        Automation and system administration projects using Bash shell scripting.
                     </p>
                 </div>
             </a>
