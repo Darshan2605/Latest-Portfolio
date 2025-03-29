@@ -131,8 +131,7 @@
     <h1>AWS Services Blogs</h1>
     
     <div class="filter-container">
-        <button class="service-filter active" data-service="all">All Services</button>
-        <button class="service-filter" data-service="AWS EC2">EC2</button>
+        <button class="service-filter active" data-service="AWS EC2">EC2</button>
         <button class="service-filter" data-service="AWS IAM">IAM</button>
         <button class="service-filter" data-service="AWS CLI">CLI</button>
         <button class="service-filter" data-service="EBS">EBS</button>
@@ -554,6 +553,14 @@
             const filterButtons = document.querySelectorAll('.service-filter');
             const blogPosts = document.querySelectorAll('.blog-post-item');
 
+            // Show only EC2 posts by default
+            blogPosts.forEach(post => {
+                const serviceCategory = post.querySelector('.blog-category').textContent;
+                if (!serviceCategory.includes('AWS EC2')) {
+                    post.classList.add('hidden');
+                }
+            });
+
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     // Remove active class from all buttons
@@ -565,15 +572,10 @@
 
                     blogPosts.forEach(post => {
                         const serviceCategory = post.querySelector('.blog-category').textContent;
-                        
-                        if (serviceFilter === 'all') {
+                        if (serviceCategory.includes(serviceFilter)) {
                             post.classList.remove('hidden');
                         } else {
-                            if (serviceCategory.includes(serviceFilter)) {
-                                post.classList.remove('hidden');
-                            } else {
-                                post.classList.add('hidden');
-                            }
+                            post.classList.add('hidden');
                         }
                     });
                 });
