@@ -162,15 +162,7 @@
             </div>
           </li>
 
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fab fa-instagram"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Instagram</p>
-              <a href="https://www.instagram.com/darshan_londhe_26" class="contact-link" target="_blank">darshan_londhe_26</a>
-            </div>
-          </li>
+          
           
           <li class="contact-item">
             <div class="icon-box">
@@ -194,41 +186,7 @@
 
         </ul>
 
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/darshan2605" class="social-link" target="_blank">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
         
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/darshan-londhe-812303251" class="social-link" target="_blank">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        
-          <li class="social-item">
-            <a href="https://www.instagram.com/darshan_londhe_26" class="social-link" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-        
-          <li class="social-item">
-            <a href="https://leetcode.com/Darshan_Londhe" class="social-link" target="_blank">
-              <i class="fas fa-code"></i>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://medium.com/@darshanlondhe9" class="social-link" target="_blank">
-              <i class="fas fa-book"></i>
-            </a>
-          </li>
-        
-        </ul>
         
 
       </div>
@@ -316,27 +274,23 @@ Here's what I specialize in:
           <div class="social-media">
             <ul class="social-list">
               <li class="social-item">
-                <a href="https://github.com/darshan2605" class="social-link" target="_blank">
+                <a href="https://github.com/darshan2605" class="social-link github" target="_blank">
                   <i class="fab fa-github"></i>
                 </a>
               </li>
               <li class="social-item">
-                <a href="https://www.linkedin.com/in/darshan-londhe-812303251" class="social-link" target="_blank">
+                <a href="https://www.linkedin.com/in/darshan-londhe-812303251" class="social-link linkedin" target="_blank">
                   <i class="fab fa-linkedin"></i>
                 </a>
               </li>
+              
               <li class="social-item">
-                <a href="https://www.instagram.com/darshan_londhe_26" class="social-link" target="_blank">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li class="social-item">
-                <a href="https://leetcode.com/Darshan_Londhe" class="social-link" target="_blank">
+                <a href="https://leetcode.com/Darshan_Londhe" class="social-link leetcode" target="_blank">
                   <i class="fas fa-code"></i>
                 </a>
               </li>
               <li class="social-item">
-                <a href="https://medium.com/@darshanlondhe9" class="social-link" target="_blank">
+                <a href="https://medium.com/@darshanlondhe9" class="social-link medium" target="_blank">
                   <i class="fas fa-book"></i>
                 </a>
               </li>
@@ -1372,6 +1326,92 @@ Here's what I specialize in:
         .sidebar-info_more::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+    }
+
+    .social-media {
+      padding: 20px 0;
+    }
+
+    .social-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-item {
+      list-style: none;
+    }
+
+    .social-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 28px;
+      transition: all 0.3s ease;
+      color: #fff;
+    }
+
+    /* Individual social media colors and hover effects */
+    .social-link.github {
+      background: #333;
+      box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+    }
+    .social-link.github:hover {
+      background: #2b2b2b;
+      transform: translateY(-3px);
+    }
+
+    .social-link.linkedin {
+      background: #0077B5;
+      box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+    }
+    .social-link.linkedin:hover {
+      background: #006396;
+      transform: translateY(-3px);
+    }
+
+    .social-link.instagram {
+      background: #E4405F;
+      box-shadow: 0 5px 15px rgba(228, 64, 95, 0.4);
+    }
+    .social-link.instagram:hover {
+      background: #d63251;
+      transform: translateY(-3px);
+    }
+
+    .social-link.leetcode {
+      background: #FFA116;
+      box-shadow: 0 5px 15px rgba(255, 161, 22, 0.4);
+    }
+    .social-link.leetcode:hover {
+      background: #f59300;
+      transform: translateY(-3px);
+    }
+
+    .social-link.medium {
+      background: #00ab6c;
+      box-shadow: 0 5px 15px rgba(0, 171, 108, 0.4);
+    }
+    .social-link.medium:hover {
+      background: #009b61;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+      
+      .social-list {
+        gap: 15px;
+      }
     }
   </style>
 
