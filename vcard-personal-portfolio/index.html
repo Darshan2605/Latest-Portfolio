@@ -255,19 +255,10 @@
 
         <section class="about-text">
           <p>
-            I'm Darshan Dilip Londhe, a versatile MERN Developer and DevOps enthusiast passionate about creating innovative, scalable, and efficient solutions for the digital world. With a solid foundation in web development and a keen interest in automation and deployment pipelines, I bring a holistic approach to building robust applications.
-
-Here's what I specialize in:
+            I'm Darshan Dilip Londhe, a versatile MERN Developer and DevOps enthusiast passionate about creating innovative, scalable, and efficient solutions for the digital world.
           </p>
 <br>
-          <p>
-            Tools and Technologies:
-            <br>
-1)MERN Development: MongoDB, Express.js, React.js, Node.js, RESTful APIs, State Management, MySQL, PostgreSQL, Firebase, GraphQL
-<br>
-
-2)DevOps Practices: CI/CD Pipelines, Docker, Kubernetes, Git, AWS, Azure, Jenkins, Ansible, Terraform, ArgoCD
-          </p>
+          
           <br>
           <p>Social Media:</p>
 
@@ -275,23 +266,34 @@ Here's what I specialize in:
             <ul class="social-list">
               <li class="social-item">
                 <a href="https://github.com/darshan2605" class="social-link github" target="_blank">
-                  <i class="fab fa-github"></i>
+                  <div class="social-icon-container">
+                    <i class="fab fa-github"></i>
+                    <span class="social-label">GitHub</span>
+                  </div>
                 </a>
               </li>
               <li class="social-item">
                 <a href="https://www.linkedin.com/in/darshan-londhe-812303251" class="social-link linkedin" target="_blank">
-                  <i class="fab fa-linkedin"></i>
+                  <div class="social-icon-container">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="social-label">LinkedIn</span>
+                  </div>
                 </a>
               </li>
-              
               <li class="social-item">
                 <a href="https://leetcode.com/Darshan_Londhe" class="social-link leetcode" target="_blank">
-                  <i class="fas fa-code"></i>
+                  <div class="social-icon-container">
+                    <i class="fas fa-code"></i>
+                    <span class="social-label">LeetCode</span>
+                  </div>
                 </a>
               </li>
               <li class="social-item">
                 <a href="https://medium.com/@darshanlondhe9" class="social-link medium" target="_blank">
-                  <i class="fas fa-book"></i>
+                  <div class="social-icon-container">
+                    <i class="fas fa-book"></i>
+                    <span class="social-label">Medium</span>
+                  </div>
                 </a>
               </li>
             </ul>
@@ -1335,7 +1337,7 @@ Here's what I specialize in:
     .social-list {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       flex-wrap: wrap;
     }
 
@@ -1344,73 +1346,86 @@ Here's what I specialize in:
     }
 
     .social-link {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      font-size: 28px;
-      transition: all 0.3s ease;
+      text-decoration: none;
       color: #fff;
     }
 
+    .social-icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-icon-container i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .social-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      margin-top: 5px;
+    }
+
     /* Individual social media colors and hover effects */
-    .social-link.github {
+    .github i {
       background: #333;
       box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
     }
-    .social-link.github:hover {
+    .github:hover i {
       background: #2b2b2b;
       transform: translateY(-3px);
     }
 
-    .social-link.linkedin {
+    .linkedin i {
       background: #0077B5;
       box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
     }
-    .social-link.linkedin:hover {
+    .linkedin:hover i {
       background: #006396;
       transform: translateY(-3px);
     }
 
-    .social-link.instagram {
-      background: #E4405F;
-      box-shadow: 0 5px 15px rgba(228, 64, 95, 0.4);
-    }
-    .social-link.instagram:hover {
-      background: #d63251;
-      transform: translateY(-3px);
-    }
-
-    .social-link.leetcode {
+    .leetcode i {
       background: #FFA116;
       box-shadow: 0 5px 15px rgba(255, 161, 22, 0.4);
     }
-    .social-link.leetcode:hover {
+    .leetcode:hover i {
       background: #f59300;
       transform: translateY(-3px);
     }
 
-    .social-link.medium {
+    .medium i {
       background: #00ab6c;
       box-shadow: 0 5px 15px rgba(0, 171, 108, 0.4);
     }
-    .social-link.medium:hover {
+    .medium:hover i {
       background: #009b61;
       transform: translateY(-3px);
     }
 
     /* Responsive adjustments */
     @media screen and (max-width: 768px) {
-      .social-link {
+      .social-icon-container i {
         width: 50px;
         height: 50px;
         font-size: 24px;
       }
       
       .social-list {
-        gap: 15px;
+        gap: 20px;
+      }
+
+      .social-label {
+        font-size: 12px;
       }
     }
   </style>
