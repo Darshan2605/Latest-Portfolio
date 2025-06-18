@@ -17,3 +17,5 @@ https://medium.com/@darshanlondhe9/how-to-setup-auto-scaling-group-on-aws-663873
 
 6) How to Create Dynamic Auto Scaling Policy on AWS?
 https://medium.com/@darshanlondhe9/how-to-create-dynamic-auto-scaling-policy-on-aws-11a7c5007e17
+
+
