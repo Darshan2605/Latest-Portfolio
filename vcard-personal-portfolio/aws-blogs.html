@@ -66,10 +66,17 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .blog-post-item:hover {
             transform: translateY(-5px);
+        }
+
+        .blog-post-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .blog-content {
@@ -125,462 +132,145 @@
                 padding: 6px 12px;
             }
         }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            color: hsl(45, 100%, 72%);
+        }
+
+        .loading.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>AWS Services Blogs</h1>
     
-    <div class="filter-container">
-        <button class="service-filter active" data-service="AWS EC2">EC2</button>
-        <button class="service-filter" data-service="AWS IAM">IAM</button>
-        <button class="service-filter" data-service="AWS CLI">CLI</button>
-        <button class="service-filter" data-service="EBS">EBS</button>
-        <button class="service-filter" data-service="Load Balancer">Load Balancer</button>
-        <button class="service-filter" data-service="Auto Scaling">Auto Scaling</button>
-        <button class="service-filter" data-service="AWS VPC">VPC</button>
-        <button class="service-filter" data-service="S3">S3</button>
-        <button class="service-filter" data-service="ECR">ECR</button>
-        <button class="service-filter" data-service="AWS ECS">ECS</button>
-        <button class="service-filter" data-service="CI/CD">CI/CD</button>
-        <button class="service-filter" data-service="Elastic Beanstalk">Elastic Beanstalk</button>
-        <button class="service-filter" data-service="AWS Fargate">AWS Fargate</button>
+    <div class="filter-container" id="filterContainer">
+        <!-- Service filters will be loaded dynamically -->
     </div>
 
-    <section class="blog-posts">
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS IAM</p>
-                </div>
-                <h3 class="blog-item-title">AWS Account Creation</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-aws-account-5a5054b2c528" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">AWS EC2 Creation</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-aws-ec2-instance-d92afdddd922" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">Access Linux EC2 From Linux</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-connect-with-aws-ec2-using-linux-ssh-agent-0b4f60b9bfa1" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">Access Windows EC2 from Linux</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-connect-to-windows-ec2-from-linux-84fe32937249" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">How to Create Windows EC2</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-a-windows-ec2-instance-on-aws-0093c433a9d9" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">How to install Nginx on EC2</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-install-nginx-in-aws-ec2-ubuntu-366f474ea89e" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">How to install Nginx on EC2 using Bootstrap Script</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-write-bootstrap-script-user-data-to-install-nginx-on-ec2-a9a848753f80" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">How to Extract EC2 Instance Metadata using 169.254.169.254 command</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-extract-ec2-instance-metadata-using-169-254-169-254-command-d76c0d9d9c8d" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS IAM</p>
-                </div>
-                <h3 class="blog-item-title">IAM Creation</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-aws-iam-user-7582105fca74" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS IAM</p>
-                </div>
-                <h3 class="blog-item-title">User Group Creation</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-aws-iam-user-group-622cdda76d94" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS IAM</p>
-                </div>
-                <h3 class="blog-item-title">MFA for Root and IAM user</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-setup-mfa-for-root-account-and-iam-user-1762182f069f" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS CLI</p>
-                </div>
-                <h3 class="blog-item-title">How to Configure AWS CLI in Linux/Windows to Interact with AWS Console? What is Cloud Shell?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-configure-aws-cli-in-linux-windows-to-interact-with-aws-console-9b5c92f19d9b" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2 AMI</p>
-                </div>
-                <h3 class="blog-item-title">How to Create Your Own Custom AMI in AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-your-own-custom-ami-in-aws-836ec40b36d6" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2 AMI</p>
-                </div>
-                <h3 class="blog-item-title">How to Share Our Own Custom AMI with Other Region and Account ID?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-share-our-own-custom-ami-with-other-regeion-and-account-id-e7dec8b80fe8" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Elastic IP</p>
-                </div>
-                <h3 class="blog-item-title">How to Attach Elastic IP to AWS EC2 Instance?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-attach-elastic-ip-to-aws-ec2-instance-7303fff323a1" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Elastic IP</p>
-                </div>
-                <h3 class="blog-item-title">How to Detach and Release Elastic IP Address from EC2 Instance?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-detach-and-release-elastic-ip-address-from-ec2-instance-f5f70b6258e5" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, EBS</p>
-                </div>
-                <h3 class="blog-item-title">How to Create EBS Volume, Attach and Mount to EC2?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-ebs-volume-attach-and-mount-to-ec2-8c898d914dd1" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, EBS</p>
-                </div>
-                <h3 class="blog-item-title">How to Detach EBS Volume from EC2?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-detach-ebs-volume-from-ec2-5cbfc49f7c8a" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, EBS</p>
-                </div>
-                <h3 class="blog-item-title">How to Resize EBS Volume and Resize the File System?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-resize-ebs-volume-and-resize-the-file-system-cfa34e00feb4" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, EBS</p>
-                </div>
-                <h3 class="blog-item-title">How to Attach One EBS Volume to Multiple EC2 Instances?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-attach-one-ebs-volume-to-multiple-ec2-instances-f16cf54ce0c1" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Classic Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">Classical LB with 3 EC2 Instances</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-a-classic-load-balancer-for-3-ec2-instances-in-aws-aea768c48f30" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">How to Set Up EC2 Instance to be Accessible Only by Load Balancer?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-set-up-ec2-instance-to-be-accessible-only-by-load-balancer-612ded95b619" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Application Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">How to Create an Application Load Balancer for 3 EC2 Instances using Target Group?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-an-application-load-balancer-for-3-ec2-instances-using-target-group-f1b6bccfd3c5" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Application Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">How to Perform Path-Based Routing Using Application Load Balancer?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-perform-path-based-routing-using-application-load-balancer-9646fb65a5f4" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Application Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">What is Stickiness in Application Load Balancer? How to Implement It?</h3>
-                <a href="https://medium.com/@darshanlondhe9/what-is-stickiness-in-application-load-balancer-how-to-implement-it-26ed30adcf17" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Application Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">How to Set Up HTTPS Traffic with Application Load Balancer?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-set-up-https-traffic-with-application-load-balancer-53b9372a3cdc" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Network Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">How to Set Up a Network Load Balancer on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-set-up-a-network-load-balancer-on-aws-041318b23a6e" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Launch Template</p>
-                </div>
-                <h3 class="blog-item-title">How to Create Launch Template on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-launch-template-on-aws-2d9d6526d022" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Auto Scaling</p>
-                </div>
-                <h3 class="blog-item-title">How to Setup Auto Scaling Group on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-setup-auto-scaling-group-on-aws-66387359f33e" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS EC2, Auto Scaling</p>
-                </div>
-                <h3 class="blog-item-title">How to Create Dynamic Auto Scaling Policy on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-dynamic-auto-scaling-policy-on-aws-11a7c5007e17" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Everything About VPC</h3>
-                <a href="https://medium.com/@darshanlondhe9/everything-about-vpc-in-aws-9d639b617af0" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">How to Create VPC, Subnets, Route Tables, Internet Gateway on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-create-vpc-subnets-route-tables-internet-gateway-on-aws-ff6949698b4e" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">CI/CD, AWS EC2</p>
-                </div>
-                <h3 class="blog-item-title">How to Host Static Website(From GitHub Repo) on EC2 using Code Pipeline Service(CI/CD Automation) on AWS?</h3>
-                <a href="https://medium.com/@darshanlondhe9/how-to-host-static-website-from-github-repo-on-ec2-using-code-pipeline-service-ci-cd-automation-8bc51f6ff707" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">S3, AWS ECS, AWS Fargate, ECR, Load Balancer</p>
-                </div>
-                <h3 class="blog-item-title">S3 Deploying a Node.js App on AWS ECS Fargate with Docker, ECR, and Load Balancer.</h3>
-                <a href="https://medium.com/@darshanlondhe9/automating-node-js-bfe1f15f113d" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">Elastic Beanstalk, CI/CD</p>
-                </div>
-                <h3 class="blog-item-title">Streamlining Node.js Deployment: Automating AWS Elastic Beanstalk Deployments with GitHub Actions.</h3>
-                <a href="https://medium.com/@darshanlondhe9/streamlining-node-js-deployment-automating-aws-elastic-beanstalk-deployments-with-github-actions-dbeb1123acb5" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Securely Access a Private EC2 from Your Local Machine Using a Bastion Host in AWS</h3>
-                <a href="https://medium.com/@darshanlondhe9/securely-access-a-private-ec2-from-your-local-machine-using-a-bastion-host-in-aws-758d1a2982b3" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Step-by-Step Guide to Setting Up a NAT Gateway and Connecting Private EC2 to the Internet</h3>
-                <a href="https://medium.com/@darshanlondhe9/step-by-step-guide-to-setting-up-a-nat-gateway-and-connecting-private-ec2-to-the-internet-562cba5822ad" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Step-by-Step Guide: Setting Up VPC Peering and Connecting EC2 Instances</h3>
-                <a href="https://medium.com/@darshanlondhe9/step-by-step-guide-setting-up-vpc-peering-and-connecting-ec2-instances-3cba5838e834" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Setting Up AWS Transit Gateway to Connect Multiple VPCs</h3>
-                <a href="https://medium.com/@darshanlondhe9/setting-up-aws-transit-gateway-to-connect-multiple-vpcs-d2e8afb4679a" class="blog-link">Read More</a>
-            </div>
-        </article>
-
-        <article class="blog-post-item">
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <p class="blog-category">S3, AWS VPC</p>
-                </div>
-                <h3 class="blog-item-title">Accessing S3 from a Private EC2 Instance using VPC Endpoint. What is AWS Private Link?</h3>
-                <a href="https://medium.com/@darshanlondhe9/accessing-s3-from-a-private-ec2-instance-using-vpc-endpoint-what-is-aws-private-link-b6be48d053f9" class="blog-link">Read More</a>
-            </div>
-        </article>
+    <section class="blog-posts" id="blogPosts">
+        <!-- Blog posts will be loaded dynamically -->
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.service-filter');
-            const blogPosts = document.querySelectorAll('.blog-post-item');
+    <div class="loading" id="loading">
+        Loading blogs...
+    </div>
 
-            // Show only EC2 posts by default
-            blogPosts.forEach(post => {
-                const serviceCategory = post.querySelector('.blog-category').textContent;
-                if (!serviceCategory.includes('AWS EC2')) {
-                    post.classList.add('hidden');
+    <script>
+        // Configuration
+        const config = {
+            animationDelay: 100,
+            defaultService: 'AWS EC2'
+        };
+
+        // Load blogs from JSON
+        async function loadBlogs() {
+            try {
+                const loading = document.getElementById('loading');
+                loading.classList.add('visible');
+
+                const response = await fetch('aws-blogs.json');
+                const data = await response.json();
+                
+                // Create service filters
+                createServiceFilters(data.services);
+                
+                // Display blogs
+                displayBlogs(data.blogs);
+                
+                // Set default filter
+                setDefaultFilter();
+                
+                loading.classList.remove('visible');
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+                document.getElementById('blogPosts').innerHTML = '<p>Error loading blogs. Please try again later.</p>';
+            }
+        }
+
+        // Create service filters
+        function createServiceFilters(services) {
+            const filterContainer = document.getElementById('filterContainer');
+            services.forEach(service => {
+                const button = document.createElement('button');
+                button.className = 'service-filter';
+                button.setAttribute('data-service', service);
+                button.textContent = service.replace('AWS ', '');
+                button.addEventListener('click', () => filterBlogs(service));
+                filterContainer.appendChild(button);
+            });
+        }
+
+        // Display blogs with animation
+        function displayBlogs(blogs) {
+            const blogPosts = document.getElementById('blogPosts');
+            blogPosts.innerHTML = '';
+
+            blogs.forEach((blog, index) => {
+                const card = createBlogCard(blog);
+                blogPosts.appendChild(card);
+
+                // Animate card appearance
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * config.animationDelay);
+            });
+        }
+
+        // Create blog card
+        function createBlogCard(blog) {
+            const card = document.createElement('article');
+            card.className = 'blog-post-item';
+            
+            card.innerHTML = `
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <p class="blog-category">${blog.category}</p>
+                    </div>
+                    <h3 class="blog-item-title">${blog.title}</h3>
+                    <a href="${blog.link}" class="blog-link">Read More</a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Filter blogs by service
+        function filterBlogs(service) {
+            const buttons = document.querySelectorAll('.service-filter');
+            const cards = document.querySelectorAll('.blog-post-item');
+
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-service') === service);
+            });
+
+            // Filter cards
+            cards.forEach(card => {
+                const category = card.querySelector('.blog-category').textContent;
+                if (category.includes(service)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
                 }
             });
+        }
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    button.classList.add('active');
+        // Set default filter
+        function setDefaultFilter() {
+            const defaultButton = document.querySelector(`[data-service="${config.defaultService}"]`);
+            if (defaultButton) {
+                defaultButton.click();
+            }
+        }
 
-                    const serviceFilter = button.getAttribute('data-service');
-
-                    blogPosts.forEach(post => {
-                        const serviceCategory = post.querySelector('.blog-category').textContent;
-                        if (serviceCategory.includes(serviceFilter)) {
-                            post.classList.remove('hidden');
-                        } else {
-                            post.classList.add('hidden');
-                        }
-                    });
-                });
-            });
-        });
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadBlogs);
     </script>
 </body>
 </html>
