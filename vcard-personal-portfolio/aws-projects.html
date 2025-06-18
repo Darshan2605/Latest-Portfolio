@@ -39,6 +39,13 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-post-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .blog-post-item:hover {
@@ -56,6 +63,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-item:hover .blog-banner-box img {
+            transform: scale(1.05);
         }
 
         .blog-content {
@@ -100,101 +112,149 @@
         .blog-link:hover {
             text-decoration: underline;
         }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            color: hsl(45, 100%, 72%);
+        }
+
+        .loading.visible {
+            display: block;
+        }
+
+        /* Error message */
+        .error-message {
+            text-align: center;
+            color: #ff6b6b;
+            padding: 20px;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>AWS Projects</h1>
 
-    <section class="blog-posts">
-        <!-- Static Website with CI/CD -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/how-to-host-static-website-from-github-repo-on-ec2-using-code-pipeline-service-ci-cd-automation-8bc51f6ff707">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/1.png" alt="Static Website CI/CD">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">CI/CD, EC2</p>
-                    </div>
-                    <h3 class="blog-item-title">Static Website with CI/CD Pipeline</h3>
-                    <p class="blog-text">
-                        Host Static Website from GitHub Repo on EC2 using Code Pipeline Service.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Node.js with ECS Fargate -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/automating-node-js-bfe1f15f113d">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/2.png" alt="Node.js ECS Fargate">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">ECS, Fargate, Docker</p>
-                    </div>
-                    <h3 class="blog-item-title">Node.js App on ECS Fargate</h3>
-                    <p class="blog-text">
-                        Deploy Node.js App using AWS ECS Fargate with Docker, ECR, and Load Balancer.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Elastic Beanstalk Deployment -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/streamlining-node-js-deployment-automating-aws-elastic-beanstalk-deployments-with-github-actions-dbeb1123acb5">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/3.png" alt="Elastic Beanstalk">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Elastic Beanstalk, GitHub Actions</p>
-                    </div>
-                    <h3 class="blog-item-title">Automated Elastic Beanstalk Deployment</h3>
-                    <p class="blog-text">
-                        Automating AWS Elastic Beanstalk Deployments with GitHub Actions.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Docker on EC2 -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/how-to-deploy-nodejs-docker-app-on-aws-ec2-5336e4eb87d7">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/4.png" alt="Docker on EC2">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">EC2, Docker</p>
-                    </div>
-                    <h3 class="blog-item-title">Docker Deployment on EC2</h3>
-                    <p class="blog-text">
-                        Deploy Node.js Application on EC2 using Docker Container.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Secure Node.js with SSL -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/deploying-a-secure-node-js-8fd704c4ccb3">
-                <figure class="blog-banner-box">
-                    <img src="aws-projects-img/5.png" alt="Secure Node.js">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">EC2, Nginx, SSL</p>
-                    </div>
-                    <h3 class="blog-item-title">Secure Node.js Deployment</h3>
-                    <p class="blog-text">
-                        Deploy Node.js with Nginx and SSL/TLS using Custom Domain.
-                    </p>
-                </div>
-            </a>
-        </article>
+    <section class="blog-posts" id="blogPosts">
+        <!-- Projects will be loaded dynamically -->
     </section>
+
+    <div class="loading" id="loading">
+        Loading projects...
+    </div>
+
+    <div class="error-message" id="errorMessage">
+        Error loading projects. Please try again later.
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            animationDelay: 100,
+            imageLoadTimeout: 5000
+        };
+
+        // Load projects from JSON
+        async function loadProjects() {
+            try {
+                const loading = document.getElementById('loading');
+                const errorMessage = document.getElementById('errorMessage');
+                
+                loading.classList.add('visible');
+                errorMessage.classList.remove('visible');
+
+                const response = await fetch('aws-projects.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load projects');
+                }
+                
+                const data = await response.json();
+                await displayProjects(data.projects);
+                
+                loading.classList.remove('visible');
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                document.getElementById('loading').classList.remove('visible');
+                document.getElementById('errorMessage').classList.add('visible');
+            }
+        }
+
+        // Display projects with animation
+        async function displayProjects(projects) {
+            const blogPosts = document.getElementById('blogPosts');
+            blogPosts.innerHTML = '';
+
+            for (let i = 0; i < projects.length; i++) {
+                const project = projects[i];
+                const card = createProjectCard(project);
+                blogPosts.appendChild(card);
+
+                // Animate card appearance
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, i * config.animationDelay);
+
+                // Preload image
+                await preloadImage(project.image);
+            }
+        }
+
+        // Create project card
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'blog-post-item';
+            
+            card.innerHTML = `
+                <a href="${project.link}">
+                    <figure class="blog-banner-box">
+                        <img src="${project.image}" 
+                             alt="${project.title}"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                    </figure>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <p class="blog-category">${project.category}</p>
+                        </div>
+                        <h3 class="blog-item-title">${project.title}</h3>
+                        <p class="blog-text">${project.description}</p>
+                    </div>
+                </a>
+            `;
+            
+            return card;
+        }
+
+        // Preload image
+        function preloadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = src;
+                
+                const timeout = setTimeout(() => {
+                    reject(new Error('Image load timeout'));
+                }, config.imageLoadTimeout);
+
+                img.onload = () => {
+                    clearTimeout(timeout);
+                    resolve();
+                };
+
+                img.onerror = () => {
+                    clearTimeout(timeout);
+                    reject(new Error('Image load failed'));
+                };
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+{
+  "projects": [
+    {
+      "title": "Bash Scripting Basics",
+      "category": "Shell Scripting",
+      "image": "bash-projects-img/1.png",
+      "link": "https://medium.com/@darshanlondhe9/bash-scripting-basics-1a0c0c0c0c0c",
+      "description": "Learn the fundamentals of Bash scripting including variables, loops, and conditionals."
+    },
+    {
+      "title": "Automated System Maintenance",
+      "category": "System Administration",
+      "image": "bash-projects-img/2.png",
+      "link": "https://medium.com/@darshanlondhe9/automated-system-maintenance-2b0c0c0c0c0c",
+      "description": "Create automated scripts for system maintenance tasks like log rotation and backup."
+    },
+    {
+      "title": "File Management Scripts",
+      "category": "File Operations",
+      "image": "bash-projects-img/3.png",
+      "link": "https://medium.com/@darshanlondhe9/file-management-scripts-3c0c0c0c0c0c",
+      "description": "Powerful scripts for file operations including batch renaming and organization."
+    },
+    {
+      "title": "Network Monitoring Tools",
+      "category": "Networking",
+      "image": "bash-projects-img/4.png",
+      "link": "https://medium.com/@darshanlondhe9/network-monitoring-tools-4d0c0c0c0c0c",
+      "description": "Bash scripts for monitoring network connectivity and performance."
+    },
+    {
+      "title": "Process Management Automation",
+      "category": "Process Control",
+      "image": "bash-projects-img/5.png",
+      "link": "https://medium.com/@darshanlondhe9/process-management-automation-5e0c0c0c0c0c",
+      "description": "Automate process management tasks with custom Bash scripts."
+    }
+  ]
+} 

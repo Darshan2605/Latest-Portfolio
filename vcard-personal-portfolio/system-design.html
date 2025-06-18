@@ -38,11 +38,19 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-post-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .blog-post-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
         .blog-banner-box {
@@ -56,6 +64,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-item:hover .blog-banner-box img {
+            transform: scale(1.05);
         }
 
         .blog-content {
@@ -79,12 +92,14 @@
             color: hsl(0, 0%, 100%);
             font-size: 1.3em;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .blog-text {
             color: hsl(0, 0%, 80%);
             font-size: 0.9em;
             margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         a {
@@ -95,38 +110,170 @@
         .blog-link {
             color: hsl(45, 100%, 72%);
             font-weight: 500;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s ease;
         }
 
         .blog-link:hover {
+            color: hsl(45, 100%, 82%);
             text-decoration: underline;
+        }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            color: hsl(45, 100%, 72%);
+        }
+
+        .loading.visible {
+            display: block;
+        }
+
+        /* Error message */
+        .error-message {
+            text-align: center;
+            color: #ff6b6b;
+            padding: 20px;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .blog-posts {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+
+            .blog-item-title {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
     <h1>System Design</h1>
 
-    <section class="blog-posts">
-
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/what-is-apache-kakfka-project-on-kafka-zomato-simulation-82a35e65d34b">
-                <figure class="blog-banner-box">
-                    <img src="https://dz2cdn3.dzone.com/storage/article-thumb/12418930-thumb.jpg" 
-                         alt="Apache Kafka"
-                         loading="lazy">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Apache Kafka</p>
-                    </div>
-                    <h3 class="blog-item-title">Apache Kafka: Zomato Simulation Project</h3>
-                    <p class="blog-text">
-                        Learn about Apache Kafka through a practical Zomato simulation project, understanding its core concepts and real-world applications.
-                    </p>
-                </div>
-            </a>
-        </article>
-        <!-- System Design Fundamentals -->
-        
+    <section class="blog-posts" id="blogPosts">
+        <!-- Projects will be loaded dynamically -->
     </section>
+
+    <div class="loading" id="loading">
+        Loading projects...
+    </div>
+
+    <div class="error-message" id="errorMessage">
+        Error loading projects. Please try again later.
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            animationDelay: 100,
+            imageLoadTimeout: 5000
+        };
+
+        // Load projects from JSON
+        async function loadProjects() {
+            try {
+                const loading = document.getElementById('loading');
+                const errorMessage = document.getElementById('errorMessage');
+                
+                loading.classList.add('visible');
+                errorMessage.classList.remove('visible');
+
+                const response = await fetch('system-design.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load projects');
+                }
+                
+                const data = await response.json();
+                await displayProjects(data.projects);
+                
+                loading.classList.remove('visible');
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                document.getElementById('loading').classList.remove('visible');
+                document.getElementById('errorMessage').classList.add('visible');
+            }
+        }
+
+        // Display projects with animation
+        async function displayProjects(projects) {
+            const blogPosts = document.getElementById('blogPosts');
+            blogPosts.innerHTML = '';
+
+            for (let i = 0; i < projects.length; i++) {
+                const project = projects[i];
+                const card = createProjectCard(project);
+                blogPosts.appendChild(card);
+
+                // Animate card appearance
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, i * config.animationDelay);
+
+                // Preload image
+                await preloadImage(project.image);
+            }
+        }
+
+        // Create project card
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'blog-post-item';
+            
+            card.innerHTML = `
+                <a href="${project.link}">
+                    <figure class="blog-banner-box">
+                        <img src="${project.image}" 
+                             alt="${project.title}"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                    </figure>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <p class="blog-category">${project.category}</p>
+                        </div>
+                        <h3 class="blog-item-title">${project.title}</h3>
+                        <p class="blog-text">${project.description}</p>
+                    </div>
+                </a>
+            `;
+            
+            return card;
+        }
+
+        // Preload image
+        function preloadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = src;
+                
+                const timeout = setTimeout(() => {
+                    reject(new Error('Image load timeout'));
+                }, config.imageLoadTimeout);
+
+                img.onload = () => {
+                    clearTimeout(timeout);
+                    resolve();
+                };
+
+                img.onerror = () => {
+                    clearTimeout(timeout);
+                    reject(new Error('Image load failed'));
+                };
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 </body>
 </html>
