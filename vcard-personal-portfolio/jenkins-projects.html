@@ -39,10 +39,17 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .blog-post-item:hover {
             transform: translateY(-5px);
+        }
+
+        .blog-post-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .blog-banner-box {
@@ -100,100 +107,100 @@
         .blog-link:hover {
             text-decoration: underline;
         }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+
+        .loading.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>Jenkins Projects</h1>
 
-    <section class="blog-posts">
-        <!-- Jenkins Installation Guide -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/install-jenkins-on-windows-ec2-ubuntu-467393771054">
-                <figure class="blog-banner-box">
-                    <img src="https://th.bing.com/th/id/OIP.cOyxsw7mopGonJkR_RDN4gHaFG?rs=1&pid=ImgDetMain" alt="Jenkins Installation">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Jenkins Installation</p>
-                    </div>
-                    <h3 class="blog-item-title">Install Jenkins on Windows, EC2, and Docker</h3>
-                    <p class="blog-text">
-                        Comprehensive guide for installing Jenkins on different platforms including Windows, AWS EC2, and Docker containers.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Node.js Automation with Jenkins -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/automating-a-node-js-application-build-using-jenkins-and-github-webhook-free-style-project-87043f915c97">
-                <figure class="blog-banner-box">
-                    <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*_7rcd8KpQHoWINwkxaUGLg.png" alt="Jenkins Node.js Automation">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Jenkins Automation</p>
-                    </div>
-                    <h3 class="blog-item-title">Automating Node.js Build with Jenkins and Github WebHook</h3>
-                    <p class="blog-text">
-                        Step-by-step guide on automating Node.js application builds using Jenkins Free Style Project and GitHub Webhook integration.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Jenkins Overview -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/everything-you-need-to-know-about-jenkins-05202ae33e67">
-                <figure class="blog-banner-box">
-                    <img src="https://th.bing.com/th/id/OIP.cOyxsw7mopGonJkR_RDN4gHaFG?rs=1&pid=ImgDetMain" alt="Jenkins Overview">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Jenkins Guide</p>
-                    </div>
-                    <h3 class="blog-item-title">Everything You Need to Know About Jenkins</h3>
-                    <p class="blog-text">
-                        Complete overview of Jenkins, including core concepts, features, and best practices for CI/CD implementation.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <!-- Node.js Pipeline Automation with Jenkins -->
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/automating-a-node-js-application-build-using-jenkins-pipeline-groovy-syntax-github-webhook-00b633a2e57c">
-                <figure class="blog-banner-box">
-                    <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*_7rcd8KpQHoWINwkxaUGLg.png" alt="Jenkins Pipeline Automation">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Jenkins Pipeline</p>
-                    </div>
-                    <h3 class="blog-item-title">Automating Node.js Build with Jenkins Pipeline (Groovy)</h3>
-                    <p class="blog-text">
-                        Learn how to automate Node.js builds using Jenkins Pipeline with Groovy syntax and GitHub Webhook integration for both local and public Jenkins servers.
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        <article class="blog-post-item">
-            <a href="https://medium.com/@darshanlondhe9/automating-docker-image-build-and-push-on-docker-hub-with-jenkins-slack-notifications-555aaf526e14">
-                <figure class="blog-banner-box">
-                    <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*58t8TabkS3I2gCWXScqlEg.jpeg">
-                </figure>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <p class="blog-category">Jenkins Pipeline + Slack + GitHub + DockerHub</p>
-                    </div>
-                    <h3 class="blog-item-title">Automating Docker Image Build and Push on Docker Hub with Jenkins & Slack Notifications.</h3>
-                    <p class="blog-text">
-                        This project aims to automate the process of building a Docker image and pushing it to Docker Hub using Jenkins. Additionally, Slack notifications will be integrated to provide real-time updates on the build status.
-                    </p>
-                </div>
-            </a>
-        </article>
+    <section class="blog-posts" id="blogPosts">
+        <!-- Cards will be loaded dynamically -->
     </section>
+
+    <div class="loading" id="loading">
+        Loading projects...
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            itemsPerPage: 3,
+            currentPage: 1,
+            animationDelay: 100
+        };
+
+        // Load projects from JSON
+        async function loadProjects() {
+            try {
+                const loading = document.getElementById('loading');
+                loading.classList.add('visible');
+
+                const response = await fetch('jenkins-projects.json');
+                const data = await response.json();
+                
+                displayProjects(data.projects);
+                
+                loading.classList.remove('visible');
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                document.getElementById('blogPosts').innerHTML = '<p>Error loading projects. Please try again later.</p>';
+            }
+        }
+
+        // Display projects with animation
+        function displayProjects(projects) {
+            const blogPosts = document.getElementById('blogPosts');
+            blogPosts.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const card = createProjectCard(project);
+                blogPosts.appendChild(card);
+
+                // Animate card appearance
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * config.animationDelay);
+            });
+        }
+
+        // Create project card
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'blog-post-item';
+            
+            card.innerHTML = `
+                <a href="${project.link}">
+                    <figure class="blog-banner-box">
+                        <img src="${project.image}" 
+                             alt="${project.title}"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found'">
+                    </figure>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <p class="blog-category">${project.category}</p>
+                        </div>
+                        <h3 class="blog-item-title">${project.title}</h3>
+                        <p class="blog-text">${project.description}</p>
+                    </div>
+                </a>
+            `;
+            
+            return card;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 </body>
 </html>
